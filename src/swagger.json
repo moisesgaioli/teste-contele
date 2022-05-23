@@ -1,0 +1,268 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Teste Contele",
+        "description": "Aplicação feita para criação, listagem, edição e remoção de usuários.",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/users": {
+            "post": {
+                "summary": "Cadastro de usuário",
+                "description": "Endpoint responsável por cadastrar um usuário.",
+                "tags": ["User"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "email": "contele@mail.com",
+                                        "password": "1234"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "BAD REQUEST",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "user": {
+                                        "value": {
+                                            "message": "E-mail already registered" 
+                                        }
+                                    }
+                                }
+                            }
+                        }                       
+                    },
+                    "201": {
+                        "description": "CREATED",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "user": {
+                                        "value": {
+                                            "user_id": "b553e516-85a7-4c53-a554-f3562b86f23c",
+                                            "email": "contele@mail.com"
+                                        }
+                                    }
+                                }
+                            }
+                        }                       
+                    }
+                }
+            },
+            "get": {
+                "summary": "Lista usuários",
+                "description": "Endpoint responsável por listar todos usuários cadastrados.",
+                "tags": ["User"],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "user": {
+                                        "value": [
+                                            {
+                                                "user_id": "b553e516-85a7-4c53-a554-f3562b86f23c",
+                                                "email": "contele@mail.com"
+                                            },
+                                            {
+                                                "user_id": "dd29cc08-65cd-4740-af0f-82446f0566ad",
+                                                "email": "moises@mail.com"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deletar todos usuários",
+                "description": "Endpoint responsável por deletar todos usuários cadastrados.",
+                "tags": ["User"],
+                "responses": {
+                    "204": {
+                        "description": "NO CONTENT"
+                    }
+                }
+            }
+        },
+        "/api/v1/users/{user_id}": {
+            "get": {
+                "summary": "Lista um usuário através de seu ID",
+                "description": "Endpoint responsável por listar um usuário através de seu ID",
+                "tags": ["User"],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "ID necessário para consulta",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description":"NOT FOUND",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "user": {
+                                        "value": {
+                                            "message":"User not found"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "user": {
+                                        "value": {
+                                            "user_id": "b553e516-85a7-4c53-a554-f3562b86f23c",
+                                            "email": "contele@mail.com"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Editar dados do usuário",
+                "description": "Endpoint responsável por editar os dados do usuário",
+                "tags": ["User"],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "ID necessário para consulta",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Update_User"
+                            },
+                            "examples": {
+                                "user": {
+                                    "value": {
+                                        "email": "con@mail.com"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "404": {
+                        "description":"NOT FOUND",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "user": {
+                                        "value": {
+                                            "message":"User not found"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "BAD REQUEST",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "user": {
+                                        "value": {
+                                            "message": "E-mail already registered" 
+                                        }
+                                    }
+                                }
+                            }
+                        }                       
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "user": {
+                                        "value": {
+                                            "user_id": "b553e516-85a7-4c53-a554-f3562b86f23c",
+                                            "email": "con@mail.com"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deletar um usuário específico",
+                "description": "Endpoint responsável por deletar um usuário cadastrado.",
+                "tags": ["User"],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "ID necessário para consulta",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "NO CONTENT"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "type": "object",
+                "required": ["email", "password"],
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Update_User": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

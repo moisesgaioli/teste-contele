@@ -6,7 +6,7 @@ const deleteAllUsersController = async (req: Request, res: Response) => {
 
     await new UserRepository().deleteAllUsers(users)
 
-    return res.status(200).json()
+    return res.status(204).json()
 }
 
 
