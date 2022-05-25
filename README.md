@@ -30,7 +30,7 @@ sudo docker-compose up
 <p> ou </p>
 
 ```
-docker-compose:up
+docker-compose up
 ```
 
 <h4> Iniciando servidor localmente </h4>
