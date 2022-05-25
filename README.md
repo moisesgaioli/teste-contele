@@ -11,7 +11,7 @@
 
 <h2> Iniciando aplicação </h2>
 
-<p> Primeiramente configura suas variáveis de ambiente no arquivo ```.env``` </p>
+<p> Primeiramente configura suas variáveis de ambiente no arquivo ``` .env ``` </p>
 
 <h4> Instalando dependências </h4>
 
