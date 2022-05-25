@@ -2,8 +2,11 @@
 
 <p> Aplicação desenvolvida em Express.js com consultas no banco de dados através do TypeORM. A API tem o objetivo de criar, listar, editar e deletar usuários. </p>
 
-<h4> Documentação: </h4>
-<p> Endpoint => /documentation </p>
+<h4> Documentação </h4>
+<p> Endpoint: </p>
+```
+/documentation
+```
 
 <h2> Iniciando aplicação </h2>
 
